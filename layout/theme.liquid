@@ -28,39 +28,6 @@
 
     {% render 'meta-tags' %}
 
-    <script>
-      const ON_CHANGE_DEBOUNCE_TIMER = 300;
-
-      const PUB_SUB_EVENTS = {
-        cartUpdate: 'cart-update',
-        quantityUpdate: 'quantity-update',
-        variantChange: 'variant-change',
-        cartError: 'cart-error',
-      };
-      let subscribers = {};
-
-      function subscribe(eventName, callback) {
-        if (subscribers[eventName] === undefined) {
-          subscribers[eventName] = [];
-        }
-
-        subscribers[eventName] = [...subscribers[eventName], callback];
-
-        return function unsubscribe() {
-          subscribers[eventName] = subscribers[eventName].filter((cb) => {
-            return cb !== callback;
-          });
-        };
-      }
-
-      function publish(eventName, data) {
-        if (subscribers[eventName]) {
-          subscribers[eventName].forEach((callback) => {
-            callback(data);
-          });
-        }
-      }
-    </script>
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     {%- if settings.animations_reveal_on_scroll -%}
@@ -78,8 +45,12 @@
     {%- endif -%}
     
     {%- if settings.predictive_search_enabled -%}
-      {{ 'predictive-search.css' | asset_url | stylesheet_tag: preload: true }}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      <link
+        rel="stylesheet"
+        href="{{ 'predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
     {%- endif -%}
 
 
@@ -155,5 +126,9 @@
       };
     </script>
 
+
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   </body>
 </html>
