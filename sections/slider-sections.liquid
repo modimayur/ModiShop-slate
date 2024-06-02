@@ -35,7 +35,7 @@
 
 
 
-      {%- if section.settings.style == 'slider' -%}
+      
       <css-slider data-options='{
           "selector": ".grid__item",
           "groupCells": true,
@@ -44,13 +44,10 @@
         }'
         class="css-slider css-slider--bottom-navigation"
       >
-    {%- endif -%}
     <div class="grid grid--slider {{ section.settings.grid-desktop }} {{ section.settings.grid-mobile }}">
     {% content_for 'blocks' %}
     </div>
-    {%- if section.settings.style == 'slider' -%}
     </css-slider>
-    {%- endif -%}
 
     </div>
 </div>
@@ -64,7 +61,7 @@
       "type": "inline_richtext",
       "id": "heading",
       "default": "Slider Sections",
-      "label": "t:sections.collage.settings.heading.label"
+      "label": "t:sections.slider.settings.heading.label"
     },
     {
       "type": "select",
@@ -88,43 +85,27 @@
     },
     {
       "type": "select",
-      "id": "style",
-      "label": "Layout",
-      "options": [
-        {
-          "label": "Slider",
-          "value": "slider"
-        },
-        {
-          "label": "Grid",
-          "value": "grid"
-        }
-      ],
-      "default": "slider"
-    },
-    {
-      "type": "select",
       "id": "image_ratio",
       "options": [
         {
           "value": "adapt",
-          "label": "t:sections.multicolumn.settings.image_ratio.options__1.label"
+          "label": "t:sections.all.image_ratio.options__1.label"
         },
         {
           "value": "portrait",
-          "label": "t:sections.multicolumn.settings.image_ratio.options__2.label"
+          "label": "t:sections.all.image_ratio.options__2.label"
         },
         {
           "value": "square",
-          "label": "t:sections.multicolumn.settings.image_ratio.options__3.label"
+          "label": "t:sections.all.image_ratio.options__3.label"
         },
         {
           "value": "circle",
-          "label": "t:sections.multicolumn.settings.image_ratio.options__4.label"
+          "label": "t:sections.all.image_ratio.options__4.label"
         }
       ],
       "default": "adapt",
-      "label": "t:sections.multicolumn.settings.image_ratio.label"
+      "label": "t:sections.all.image_ratio.label"
     },
     {
       "type": "select",

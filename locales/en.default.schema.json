@@ -2,7 +2,113 @@
   "settings_schema": {
     "global": {
       "settings": {
-      
+        "header__border": {
+          "content": "Border"
+        },
+        "header__shadow": {
+          "content": "Shadow"
+        },
+        "blur": {
+          "label": "Blur"
+        },
+        "corner_radius": {
+          "label": "Corner radius"
+        },
+        "horizontal_offset": {
+          "label": "Horizontal offset"
+        },
+        "vertical_offset": {
+          "label": "Vertical offset"
+        },
+        "thickness": {
+          "label": "Thickness"
+        },
+        "opacity": {
+          "label": "Opacity"
+        },
+        "image_padding": {
+          "label": "Image padding"
+        },
+        "text_alignment": {
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Center"
+          },
+          "options__3": {
+            "label": "Right"
+          },
+          "label": "Text alignment"
+        }
+      }
+    },
+    "cards": {
+      "name": "Product cards",
+      "settings": {
+        "style": {
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Card"
+          },
+          "label": "Style"
+        }
+      }
+    },
+    "collection_cards": {
+      "name": "Collection cards",
+      "settings": {
+        "style": {
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Card"
+          },
+          "label": "Style"
+        }
+      }
+    },
+    "blog_cards": {
+      "name": "Blog cards",
+      "settings": {
+        "style": {
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Card"
+          },
+          "label": "Style"
+        }
+      }
+    },
+    "badges": {
+      "name": "Badges",
+      "settings": {
+        "position": {
+          "options__1": {
+            "label": "Bottom left"
+          },
+          "options__2": {
+            "label": "Bottom right"
+          },
+          "options__3": {
+            "label": "Top left"
+          },
+          "options__4": {
+            "label": "Top right"
+          },
+          "label": "Position on cards"
+        },
+        "sale_badge_color_scheme": {
+          "label": "Sale badge color scheme"
+        },
+        "sold_out_badge_color_scheme": {
+          "label": "Sold out badge color scheme"
+        }
       }
     },
     "colors": {
@@ -51,12 +157,32 @@
         }
       }
     },
+    "brand_information": {
+      "name": "Brand information",
+      "settings": {
+        "paragraph": {
+          "content": "Add a brand description to your store's footer."
+        },
+        "brand_headline": {
+          "label": "Headline"
+        },
+        "brand_description": {
+          "label": "Description"
+        },
+        "brand_image": {
+          "label": "Image"
+        },
+        "brand_image_width": {
+          "label": "Image width"
+        }
+      }
+    },
     "typography": {
       "name": "Typography",
       "settings": {
         "type_header_font": {
           "label": "Font",
-          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https:\/\/help.shopify.com\/manual\/online-store\/os\/store-speed\/improving-speed#fonts)"
         },
         "heading_scale": {
           "label": "Font size scale"
@@ -69,12 +195,35 @@
         },
         "type_body_font": {
           "label": "Font",
-          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https:\/\/help.shopify.com\/manual\/online-store\/os\/store-speed\/improving-speed#fonts)"
         },
         "body_scale": {
           "label": "Font size scale"
         }
       }
+    },
+    "buttons": {
+      "name": "Buttons"
+    },
+    "variant_pills": {
+      "name": "Variant pills",
+      "paragraph": "Variant pills are one way of displaying your product variants. [Learn more](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types#variant-picker-block)"
+    },
+    "inputs": {
+      "name": "Inputs"
+    },
+    "content_containers": {
+      "name": "Content containers"
+    },
+    "popups": {
+      "name": "Dropdowns and pop-ups",
+      "paragraph": "Affects areas like navigation dropdowns, pop-up modals, and cart pop-ups."
+    },
+    "media": {
+      "name": "Media"
+    },
+    "drawers": {
+      "name": "Drawers"
     },
     "animations": {
       "name": "Animations",
@@ -94,6 +243,109 @@
           },
           "label": "Hover effect",
           "info": "Affects cards and buttons."
+        }
+      }
+    },
+    "social-media": {
+      "name": "Social media",
+      "settings": {
+        "header": {
+          "content": "Social accounts"
+        },
+        "social_twitter_link": {
+          "label": "X \/ Twitter",
+          "info": "https:\/\/x.com\/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https:\/\/facebook.com\/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https:\/\/pinterest.com\/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http:\/\/instagram.com\/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok",
+          "info": "https:\/\/tiktok.com\/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https:\/\/shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https:\/\/www.youtube.com\/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https:\/\/vimeo.com\/shopify"
+        }
+      }
+    },
+    "search_input": {
+      "name": "Search behavior",
+      "settings": {
+        "header": {
+          "content": "Search suggestions"
+        },
+        "predictive_search_enabled": {
+          "label": "Enable search suggestions"
+        },
+        "predictive_search_show_vendor": {
+          "label": "Show product vendor",
+          "info": "Visible when search suggestions enabled."
+        },
+        "predictive_search_show_price": {
+          "label": "Show product price",
+          "info": "Visible when search suggestions enabled."
+        }
+      }
+    },
+    "currency_format": {
+      "name": "Currency format",
+      "settings": {
+        "content": "Currency codes",
+        "paragraph": "Cart and checkout prices always show currency codes. Example: $1.00 USD.",
+        "currency_code_enabled": {
+          "label": "Show currency codes"
+        }
+      }
+    },
+    "cart": {
+      "name": "Cart",
+      "settings": {
+        "cart_type": {
+          "label": "Cart type",
+          "drawer": {
+            "label": "Drawer"
+          },
+          "page": {
+            "label": "Page"
+          },
+          "notification": {
+            "label": "Popup notification"
+          }
+        },
+        "show_vendor": {
+          "label": "Show vendor"
+        },
+        "show_cart_note": {
+          "label": "Enable cart note"
+        },
+        "cart_drawer": {
+          "header": "Cart drawer",
+          "collection": {
+            "label": "Collection",
+            "info": "Visible when cart drawer is empty."
+          }
         }
       }
     },
@@ -164,6 +416,233 @@
         },
         "options__4": {
           "label": "Extra large"
+        }
+      },
+      "image_ratio": {
+        "label": "Image ratio",
+        "options__1": {
+          "label": "Adapt to image"
+        },
+        "options__2": {
+          "label": "Portrait"
+        },
+        "options__3": {
+          "label": "Square"
+        },
+        "options__4": {
+          "label": "Circle"
+        },
+        "info": "Add images by editing your collections. [Learn more](https:\/\/help.shopify.com\/manual\/products\/collections)"
+      },
+      "image_shape": {
+        "options__1": {
+          "label": "Default"
+        },
+        "options__2": {
+          "label": "Arch"
+        },
+        "options__3": {
+          "label": "Blob"
+        },
+        "options__4": {
+          "label": "Chevron left"
+        },
+        "options__5": {
+          "label": "Chevron right"
+        },
+        "options__6": {
+          "label": "Diamond"
+        },
+        "options__7": {
+          "label": "Parallelogram"
+        },
+        "options__8": {
+          "label": "Round"
+        },
+        "label": "Image shape",
+        "info": "Standard-styled cards have no borders when an image shape is active."
+      },
+      "heading_alignment": {
+        "options__1": {
+          "label": "Left"
+        },
+        "options__2": {
+          "label": "Center"
+        },
+        "options__3": {
+          "label": "Right"
+        },
+        "label": "Heading alignment"
+      }
+    },
+    "header": {
+      "name": "Header",
+      "settings": {
+        "logo_help": {
+          "content": "Edit your logo in [theme settings](\/editor?context=theme&category=logo)."
+        },
+        "logo_position": {
+          "label": "Desktop logo position",
+          "options__1": {
+            "label": "Middle left"
+          },
+          "options__2": {
+            "label": "Top left"
+          },
+          "options__3": {
+            "label": "Top center"
+          },
+          "options__4": {
+            "label": "Middle center"
+          }
+        },
+        "menu": {
+          "label": "Menu"
+        },
+        "menu_type_desktop": {
+          "label": "Desktop menu type",
+          "info": "Menu type is automatically optimized for mobile.",
+          "options__1": {
+            "label": "Dropdown"
+          },
+          "options__2": {
+            "label": "Mega menu"
+          },
+          "options__3": {
+            "label": "Drawer"
+          }
+        },
+        "show_line_separator": {
+          "label": "Show separator line"
+        },
+        "header__1": {
+          "content": "Color"
+        },
+        "menu_color_scheme": {
+          "label": "Menu color scheme"
+        },
+        "sticky_header_type": {
+          "label": "Sticky header",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "On scroll up"
+          },
+          "options__3": {
+            "label": "Always"
+          },
+          "options__4": {
+            "label": "Always, reduce logo size"
+          }
+        },
+        "header__3": {
+          "content": "Country\/region selector"
+        },
+        "header__4": {
+          "info": "To add a country\/region, go to your [market settings.](\/admin\/settings\/markets)"
+        },
+        "enable_country_selector": {
+          "label": "Enable country\/region selector"
+        },
+        "header__5": {
+          "content": "Language selector"
+        },
+        "header__6": {
+          "info": "To add a language, go to your [language settings.](\/admin\/settings\/languages)"
+        },
+        "enable_language_selector": {
+          "label": "Enable language selector"
+        },
+        "margin_bottom": {
+          "label": "Bottom margin"
+        },
+        "mobile_layout": {
+          "content": "Mobile layout"
+        },
+        "mobile_logo_position": {
+          "label": "Mobile logo position",
+          "options__1": {
+            "label": "Center"
+          },
+          "options__2": {
+            "label": "Left"
+          }
+        }
+      }
+    },
+    "announcement-bar": {
+      "name": "Announcement bar",
+      "settings": {
+        "auto_rotate": {
+          "label": "Auto-rotate announcements"
+        },
+        "change_slides_speed": {
+          "label": "Change every"
+        },
+        "header__1": {
+          "content": "Social media icons",
+          "info": "To display your social media accounts, link them in your [theme settings](\/editor?context=theme&category=social%20media)."
+        },
+        "header__2": {
+          "content": "Announcements"
+        },
+        "show_social": {
+          "label": "Show icons on desktop"
+        },
+        "header__3": {
+          "content": "Country\/region selector",
+          "info": "To add a country\/region, go to your [market settings.](\/admin\/settings\/markets)"
+        },
+        "enable_country_selector": {
+          "label": "Enable country\/region selector"
+        },
+        "header__4": {
+          "content": "Language selector",
+          "info": "To add a language, go to your [language settings.](\/admin\/settings\/languages)"
+        },
+        "enable_language_selector": {
+          "label": "Enable language selector"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "Announcement",
+          "settings": {
+            "text": {
+              "label": "Text"
+            },
+            "text_alignment": {
+              "label": "Text alignment",
+              "options__1": {
+                "label": "Left"
+              },
+              "options__2": {
+                "label": "Center"
+              },
+              "options__3": {
+                "label": "Right"
+              }
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Announcement bar"
+      }
+    },
+    "slider":{
+      "name": "slider",
+      "layout": {
+        "label": "Layout",
+        "options__1": {
+          "label": "Full width"
+        },
+        "options__2": {
+          "label": "Grid"
         }
       }
     }

@@ -53,6 +53,25 @@
       >
     {%- endif -%}
 
+    <style type="text/css">
+      :root {
+        --color-text-main: #000;
+      }
+    </style>
+
+    {{ 'component-css-slider.css' | asset_url | stylesheet_tag }}
+
+    <script>
+      const debounce = (fn, wait) => {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn.apply(this, args), wait);
+        };
+      };
+    </script>
+
+    <script src="{{ 'component-css-slider.js' | asset_url }}" defer></script>
 
     <script>
       if (Shopify.designMode) {document.documentElement.classList.add('shopify-design-mode');}
