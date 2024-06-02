@@ -1,0 +1,253 @@
+{
+  "sections": {
+    "slider_sections_KMELbh": {
+      "type": "slider-sections",
+      "blocks": {
+        "column_block_brtPUA": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_7GetwQ": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 01"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_7GetwQ"
+          ]
+        },
+        "column_block_mwdjfb": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_7DxTqW": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 02"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_7DxTqW"
+          ]
+        },
+        "column_block_hXmCJj": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_4TnDq9": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 03"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_4TnDq9"
+          ]
+        },
+        "column_block_pHT9eL": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_hCQUkr": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 04"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_hCQUkr"
+          ]
+        },
+        "column_block_bAqgt7": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_EKyHjt": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 05"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_EKyHjt"
+          ]
+        },
+        "column_block_NKTPTQ": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_Rw8WE7": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 06"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_Rw8WE7"
+          ]
+        },
+        "column_block_yVywAL": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_bRtgMB": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 07"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_bRtgMB"
+          ]
+        },
+        "column_block_rMddrF": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_9kjrmE": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 08"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_9kjrmE"
+          ]
+        },
+        "column_block_Q4paPp": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_7KkAKx": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 09"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_7KkAKx"
+          ]
+        },
+        "column_block_jdeQyG": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_t8DEQc": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 10"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_t8DEQc"
+          ]
+        },
+        "column_block_mB4CkD": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_HTb4XB": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 11"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_HTb4XB"
+          ]
+        },
+        "column_block_8eNDFw": {
+          "type": "column-block",
+          "settings": {
+            "text": "",
+            "color_scheme": ""
+          },
+          "blocks": {
+            "section_heading_Cq9DaP": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 12"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_Cq9DaP"
+          ]
+        }
+      },
+      "block_order": [
+        "column_block_brtPUA",
+        "column_block_mwdjfb",
+        "column_block_hXmCJj",
+        "column_block_pHT9eL",
+        "column_block_bAqgt7",
+        "column_block_NKTPTQ",
+        "column_block_yVywAL",
+        "column_block_rMddrF",
+        "column_block_Q4paPp",
+        "column_block_jdeQyG",
+        "column_block_mB4CkD",
+        "column_block_8eNDFw"
+      ],
+      "settings": {
+        "heading": "Slider Sections",
+        "heading_size": "h2",
+        "style": "slider",
+        "image_ratio": "adapt",
+        "grid-desktop": "grid-3",
+        "grid-mobile": "grid-lap-2",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "slider_sections_KMELbh"
+  ]
+}

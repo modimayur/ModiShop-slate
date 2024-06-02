@@ -1,0 +1,31 @@
+<div class="grid-item-inner color-{{ block.settings.color_scheme }} gradient isolate content-container">
+  {% if block.settings.text != blank %}
+  <h2>{{ block.settings.text }}</h2>
+  {% endif %}
+  {% content_for 'blocks' %}
+</div>
+{% schema %}
+{
+  "name": "Column Block",
+  "class": "grid__item grid_column_block_item",
+  "blocks": [{"type": "@app"}, {"type": "@theme"}],
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Column Block",
+      "default":"Column Block"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    }    
+  ],
+  "presets": [
+    { "name": "Column Block"}
+  ]
+}
+{% endschema %}

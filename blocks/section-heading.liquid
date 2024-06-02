@@ -1,0 +1,20 @@
+<h2 class="section-heading h2">
+  {{ block.settings.text }}
+</h2>
+
+{% schema %}
+{
+  "name": "Section heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Section heading",
+      "default": "Section heading 01"
+    }
+  ],
+  "presets": [
+    { "name": "Section heading"}
+  ]
+}
+{% endschema %}

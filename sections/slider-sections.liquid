@@ -1,0 +1,224 @@
+{%- style -%}
+ .section-{{ section.id }}-padding {
+    {% if section.settings.padding_top > 60 %}
+      padding-top: {{ section.settings.padding_top | divided_by: 2 | round: 0 }}px;      
+    {% else %}
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    {% endif %}
+    {% if section.settings.padding_bottom > 60 %}
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 | round: 0 }}px;      
+    {% else %}
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {% endif %}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{% comment %}
+<script src="{{ 'custom-slider.js' | asset_url }}" defer="defer"></script>
+{% endcomment %}
+
+
+
+<div class="color-{{ section.settings.color_scheme }} gradient isolate">
+  <div class="page-width section-{{ section.id }}-padding">
+    
+    {%- if section.settings.heading != blank -%}
+      <h2 class="collage-wrapper-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+
+
+
+      {%- if section.settings.style == 'slider' -%}
+      <css-slider data-options='{
+          "selector": ".grid__item",
+          "groupCells": true,
+          "indexNav": true,
+          "navigationDOM": "<span class=\"css-slider-button css-slider-prev\" style=\"display:none\"><svg fill=\"none\" height=\"13\" viewBox=\"0 0 8 13\" width=\"8\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"#000\" ><path d=\"m7.91419 1.41431-6.48529 6.48528-1.4142102-1.41422 6.4852802-6.48527702z\"/><path d=\"m6.48528 12.9849-6.48528027-6.48532 1.41421027-1.41421 6.48528 6.48523z\"/></g></svg></span><span class=\"css-slider-button css-slider-next\" style=\"display:none\"><svg width=\"9\" height=\"13\" viewBox=\"0 0 9 13\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.914169 11.5857L7.39945 5.10041L8.81367 6.51463L2.32838 12.9999L0.914169 11.5857Z\" fill=\"black\"/><path d=\"M2.34307 0.0151367L8.82835 6.50042L7.41414 7.91463L0.928857 1.42935L2.34307 0.0151367Z\" fill=\"black\"/></svg></span>"
+        }'
+        class="css-slider css-slider--bottom-navigation"
+      >
+    {%- endif -%}
+    <div class="grid grid--slider {{ section.settings.grid-desktop }} {{ section.settings.grid-mobile }}">
+    {% content_for 'blocks' %}
+    </div>
+    {%- if section.settings.style == 'slider' -%}
+    </css-slider>
+    {%- endif -%}
+
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Slider Sections",
+  "tag": "section",
+  "class": "slider-sections",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Slider Sections",
+      "label": "t:sections.collage.settings.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Layout",
+      "options": [
+        {
+          "label": "Slider",
+          "value": "slider"
+        },
+        {
+          "label": "Grid",
+          "value": "grid"
+        }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "circle",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__4.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.multicolumn.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "grid-desktop",
+      "label": "Dsktop layout",
+      "default": "grid-3",
+      "options": [
+        {
+          "value": "grid-1",
+          "label": "1 column"
+        },
+        {
+          "value": "grid-2",
+          "label": "2 columns"
+        },
+        {
+          "value": "grid-3",
+          "label": "3 columns"
+        },
+        {
+          "value": "grid-4",
+          "label": "4 columns"
+        },
+        {
+          "value": "grid-5",
+          "label": "5 columns"
+        },
+        {
+          "value": "grid-6",
+          "label": "6 columns"
+        }
+      ]
+    },   
+    {
+      "type": "select",
+      "id": "grid-mobile",
+      "label": "Mobile layout",
+      "default": "grid-lap-2",
+      "options": [
+        {
+          "value": "grid-lap-2",
+          "label": "2 columns"
+        },
+        {
+          "value": "grid-lap-1",
+          "label": "1 column"
+        }
+      ]
+    },   
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [{"type": "@app"}, {"type": "@theme"},{"type": "text"}],
+  "presets": [
+    {
+      "name": "Slider Sections",
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "This is a text block inside a group block!"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

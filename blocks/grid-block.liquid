@@ -1,0 +1,56 @@
+<div class="grid-Block">
+  <div class="grid{% if block.settings.gapless %} grid--gapless{% endif %} grid--{{ block.settings.mobile_grid }}-col grid--{{ block.settings.tablet_grid }}-col-tablet grid--{{ block.settings.desktop_grid }}-col-desktop">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Grid Block",
+  "blocks": [{ "type": "@app" }, { "type": "@theme" }],
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Grid Block",
+      "default": "Grid Block"
+    },
+    {
+      "type": "range",
+      "label": "Desktop Grid",
+      "id": "desktop_grid",
+      "default": 6,
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "label": "Tablet Grid",
+      "id": "tablet_grid",
+      "default": 2,
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "label": "Mobile Grid",
+      "id": "mobile_grid",
+      "default": 2,
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "checkbox",
+      "id": "gapless",
+      "label": "Gapless",
+      "default": false
+    }
+  ],
+  "presets": [{ "name": "Grid Block" }]
+}
+{% endschema %}

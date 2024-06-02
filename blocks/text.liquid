@@ -1,0 +1,20 @@
+<p class="text">
+  {{ block.settings.text }}
+</p>
+
+{% schema %}
+{
+  "name": "Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "text",
+      "default":"Welcome to theme block!"
+    }
+  ],
+  "presets": [
+    { "name": "Text"}
+  ]
+}
+{% endschema %}
