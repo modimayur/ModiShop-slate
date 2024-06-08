@@ -1,5 +1,60 @@
 {
   "sections": {
+    "slideshow_V4MQgA": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_X89YqY": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hero-slider-one.webp",
+            "heading": "Image slide 01",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "shopify:\/\/collections\/all",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-3",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_HYCdnR": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hero-slider-one.webp",
+            "heading": "Image slide 02",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_X89YqY",
+        "slide_HYCdnR"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
     "slider_sections_KMELbh": {
       "type": "slider-sections",
       "blocks": {
@@ -236,8 +291,8 @@
       ],
       "settings": {
         "heading": "Slider Sections",
+        "heading_alignment": "center",
         "heading_size": "h2",
-        "style": "slider",
         "image_ratio": "adapt",
         "grid-desktop": "grid-3",
         "grid-mobile": "grid-lap-2",
@@ -248,6 +303,7 @@
     }
   },
   "order": [
+    "slideshow_V4MQgA",
     "slider_sections_KMELbh"
   ]
 }

@@ -29,6 +29,8 @@
     {% render 'meta-tags' %}
 
 
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
@@ -61,15 +63,6 @@
 
     {{ 'component-css-slider.css' | asset_url | stylesheet_tag }}
 
-    <script>
-      const debounce = (fn, wait) => {
-        let t;
-        return (...args) => {
-          clearTimeout(t);
-          t = setTimeout(() => fn.apply(this, args), wait);
-        };
-      };
-    </script>
 
     <script src="{{ 'component-css-slider.js' | asset_url }}" defer></script>
 
