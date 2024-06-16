@@ -477,3 +477,18 @@ html[dir='rtl'] .css-slider-button {
   max-width: none;
   width: auto;
 }
+
+
+
+.css-slider.fade .css-slide.css-slide--snap:nth-child(1n + 2) {
+  position: absolute;
+  inset: 0;
+}
+.css-slider.fade .css-slide.css-slide--snap:not(.css-slide-active) {
+  opacity: 0;
+  transition: all 0.1s linear;
+}
+.css-slider.fade .css-slide.css-slide--snap.css-slide-active {
+  opacity: 1;
+  transition: all 0.4s linear;
+}

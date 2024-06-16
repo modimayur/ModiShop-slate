@@ -6,7 +6,8 @@ if ( typeof CSSSlider !== 'function' ) {
 
       super();
 
-      this._touchScreen = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
+      // this._touchScreen = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
+      this._touchScreen = document.body.classList.contains('touchevents');
 
       this._rtl = document.documentElement.getAttribute('dir') == 'rtl';
 
@@ -28,7 +29,9 @@ if ( typeof CSSSlider !== 'function' ) {
           undisplay: false,
           disableSwipe: false,
           listenScroll: false,
-          observer: true
+          observer: true,
+          disableMouseDownEvent: true,
+          autoplay: 0
         }, ...JSON.parse(this.dataset.options)
       };
 
@@ -68,6 +71,7 @@ if ( typeof CSSSlider !== 'function' ) {
       this._changeEvent = new CustomEvent('change');
       this._scrollEvent = new CustomEvent('scroll');
       this._navEvent = new CustomEvent('navigation');
+      this._resetEvent = new CustomEvent('reset');
       this._pointerDownEvent = new CustomEvent('pointerDown');
       this._pointerUpEvent = new CustomEvent('pointerUp');
 
@@ -110,9 +114,11 @@ if ( typeof CSSSlider !== 'function' ) {
       this.length = this.items.length;
       this.windowWidth = window.innerWidth;
 
-      this.querySelector('.css-slider-container').addEventListener('mousedown', e=>{
-        e.preventDefault();
-      })
+      if ( this.o.disableMouseDownEvent ) {
+        this.querySelector('.css-slider-container').addEventListener('mousedown', e=>{
+          e.preventDefault();
+        })
+      }
       
       this.viewport = this.querySelector('.css-slider-viewport');
       if ( this.o.autoHeight ) {
@@ -285,6 +291,10 @@ if ( typeof CSSSlider !== 'function' ) {
       this.sliderEnabled = true;
       this.dispatchEvent(this._readyEvent);
 
+      // check for autoplay
+      if ( parseInt(this.o.autoplay) > 0 ) {
+        this._initAutoplay();
+      }
     }
 
     changeSlide(direction, behavior='smooth'){
@@ -301,7 +311,7 @@ if ( typeof CSSSlider !== 'function' ) {
         }
       } else if ( parseInt(direction) >= 0 ) {
         this.index = parseInt(direction);
-      }
+      }      
 
       this._sliderBlockScroll = true;
       setTimeout(()=>{
@@ -354,10 +364,26 @@ if ( typeof CSSSlider !== 'function' ) {
         }
       });
 
+      if ( parseInt(this.o.autoplay) > 0 ) {
+        this._initAutoplay();
+      }
     }
 
     afterAppend(){
       this.items = this.querySelectorAll(`${this.o.selector}`);
+    }
+    
+    _initAutoplay(){
+      if ( this._autoplayInterval ) {
+        clearInterval(this._autoplayInterval);
+      }
+      this._autoplayInterval = setInterval(()=>{
+        if ( this.index + 1 == this.length ) {
+          this.changeSlide(0);
+        } else {
+          this.changeSlide('next');
+        }
+      }, parseInt(this.o.autoplay));
     }
 
     resetSlider(nojump=false,resetIndex=true){
@@ -391,6 +417,14 @@ if ( typeof CSSSlider !== 'function' ) {
         this.slidesPerPage = this.items.length;
         hideNavigation = true;
       }
+
+      const sliderDifference = totalWidth - slidesWidth;
+      if ( sliderDifference < 60 ) {
+        this.setAttribute('data-slides-per-page-difference', 'small')
+      } else if ( sliderDifference >= 60 ) {
+        this.setAttribute('data-slides-per-page-difference', 'large')
+      }
+
       // set each slide for observer
       
       this.items.forEach((elm, i) => {
@@ -403,7 +437,7 @@ if ( typeof CSSSlider !== 'function' ) {
         }
       });
 
-      this.indexedItems = this.querySelectorAll('.css-slide--snap');
+      this.indexedItems = this.querySelectorAll(`${this.o.selector}.css-slide--snap`);
       if ( resetIndex ) {
         this.index = 0;
       }
@@ -422,6 +456,7 @@ if ( typeof CSSSlider !== 'function' ) {
             this.changeSlide(e.target.dataset.index);
           });
         }
+        this.thumbnailsEl.style.setProperty('--size', this.length);
         this.thumbnails = this.thumbnailsEl.querySelectorAll('.css-slider-dot');
       }
 
@@ -463,6 +498,8 @@ if ( typeof CSSSlider !== 'function' ) {
       }
       this.element.classList.remove('disable-snapping');
 
+      this.setAttribute('data-slider-length', this.length);
+      this.dispatchEvent(this._resetEvent);
     }
 
   }
