@@ -58,6 +58,18 @@
     },
     "css-slider-sections": {
       "type": "css-slider-sections",
+      "blocks": {
+        "image_R3E96e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/here-you-go.jpg",
+            "image_ratio": "adapt"
+          }
+        }
+      },
+      "block_order": [
+        "image_R3E96e"
+      ],
       "disabled": true,
       "settings": {
         "heading": "Slider Sections",

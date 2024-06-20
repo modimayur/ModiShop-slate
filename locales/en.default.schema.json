@@ -462,6 +462,36 @@
         "label": "Image shape",
         "info": "Standard-styled cards have no borders when an image shape is active."
       },
+      "desktop_content_position": {
+        "options__1": {
+          "label": "Top Left"
+        },
+        "options__2": {
+          "label": "Top Center"
+        },
+        "options__3": {
+          "label": "Top Right"
+        },
+        "options__4": {
+          "label": "Middle Left"
+        },
+        "options__5": {
+          "label": "Middle Center"
+        },
+        "options__6": {
+          "label": "Middle Right"
+        },
+        "options__7": {
+          "label": "Bottom Left"
+        },
+        "options__8": {
+          "label": "Bottom Center"
+        },
+        "options__9": {
+          "label": "Bottom Right"
+        },
+        "label": "Desktop content position"
+      },
       "heading_alignment": {
         "options__1": {
           "label": "Left"
