@@ -474,6 +474,18 @@
         },
         "label": "Heading alignment"
       },
+      "text_alignment": {
+        "label": "Text alignment",
+        "options__1": {
+          "label": "Left"
+        },
+        "options__2": {
+          "label": "Center"
+        },
+        "options__3": {
+          "label": "Right"
+        }
+      },
       "section-width": {
         "label": "Section width",
         "full-width": {
@@ -1153,6 +1165,9 @@
       "presets": {
         "name": "Collage"
       }
+    },
+    "main-page": {
+      "name": "Page"
     }
   }
 }
