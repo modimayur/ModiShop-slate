@@ -948,7 +948,7 @@ class SlideshowComponent extends SliderComponent {
     const slideScrollPosition =
       this.slider.scrollLeft +
       this.sliderFirstItemNode.clientWidth *
-        (this.sliderControlLinksArray.indexOf(event.currentTarget) + 1 - this.currentPage);
+      (this.sliderControlLinksArray.indexOf(event.currentTarget) + 1 - this.currentPage);
     this.slider.scrollTo({
       left: slideScrollPosition,
     });
@@ -1439,3 +1439,59 @@ class BulkAdd extends HTMLElement {
 if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
+
+
+class swiperSlider extends HTMLElement {
+  constructor() {
+    super();
+    this.init(this);
+  }
+  init(swiperContainer) {
+    const configJson = swiperContainer.getAttribute('data-swiper-config');
+    if (configJson) {
+      let config = JSON.parse(configJson);
+      config = { ...config, ...{ init: false } };
+      const swiper = new Swiper(swiperContainer, config);
+      swiper.on('transitionEnd', function () {
+        console.log('slide transitionEnd', this.activeIndex,this.previousIndex,this);
+      });
+      function goToSlide(swiper, slideIndex) {
+        swiper.slideTo(slideIndex - 1);
+      }
+      swiper.on('init', function () {
+        console.log('slide init');
+        console.log(this);
+        // Play/Pause control button
+        var controlBtn = swiperContainer.querySelector('.slideshow__autoplay');
+        if(controlBtn){
+          controlBtn.addEventListener('click', function () {
+            console.log('controlBtn',swiper.autoplay.running);
+            if (swiper.autoplay.running) {
+              swiper.autoplay.stop();
+              this.setAttribute('aria-label', 'Play slideshow');
+              this.classList.add('slideshow__autoplay--paused');
+            } else {
+              swiper.autoplay.start();
+              this.setAttribute('aria-label', 'Pause slideshow');
+              this.classList.remove('slideshow__autoplay--paused');
+            }
+          });
+        }
+      });
+      this.gotoSlide = function (slideIndex) {
+        swiper.slideTo(slideIndex - 1); // slideIndex - 1 because Swiper uses 0-based index
+      };
+
+      swiper.init();
+    } else {
+      console.log('swiperContainer no config:', swiperContainer);
+    }
+  }
+  /*
+  // Use this for swipe from external Function 
+  const swiperElement = document.querySelector('.mount-slideshow swiper-component');
+  swiperElement.gotoSlide(12);
+  console.log(swiperElement)
+  */
+}
+customElements.define('swiper-component', swiperSlider);

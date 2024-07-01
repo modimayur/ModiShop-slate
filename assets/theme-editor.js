@@ -2,20 +2,31 @@ function hideProductModal() {
   const productModal = document.querySelectorAll('product-modal[open]');
   productModal && productModal.forEach((modal) => modal.hide());
 }
+function swiperSelectedIsSlide(swiperSlide) {
+  const ariaLabel = swiperSlide.getAttribute('aria-label');
+  const match = ariaLabel.match(/(\d+) \//);
+  const currentdlideindex = match ? match[1] : null;
+  const swiperElement = swiperSlide.closest('swiper-component')
+  swiperElement.gotoSlide(currentdlideindex);
+}
 
 document.addEventListener('shopify:block:select', function (event) {
   hideProductModal();
-  const blockSelectedIsSlide = event.target.classList.contains('slideshow__slide');
-  if (!blockSelectedIsSlide) return;
+  if (event.target.classList.contains('swiper-slide')) {
+    swiperSelectedIsSlide(event.target);
+  } else {
+    const blockSelectedIsSlide = event.target.classList.contains('slideshow__slide');
+    if (!blockSelectedIsSlide) return;
 
-  const parentSlideshowComponent = event.target.closest('slideshow-component');
-  parentSlideshowComponent.pause();
+    const parentSlideshowComponent = event.target.closest('slideshow-component');
+    parentSlideshowComponent.pause();
 
-  setTimeout(function () {
-    parentSlideshowComponent.slider.scrollTo({
-      left: event.target.offsetLeft,
-    });
-  }, 200);
+    setTimeout(function () {
+      parentSlideshowComponent.slider.scrollTo({
+        left: event.target.offsetLeft,
+      });
+    }, 200);
+  }
 });
 
 document.addEventListener('shopify:block:deselect', function (event) {

@@ -21,14 +21,16 @@
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
-
+    
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
-
+    
     {% render 'meta-tags' %}
+    
 
-
+    {{ 'swiper-bundle.css' | asset_url | stylesheet_tag: preload: true }}
+    <script src="{{ 'swiper-bundle.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
@@ -61,9 +63,6 @@
       }
     </style>
     
-    {{ 'component-css-slider.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'component-css-slider.js' | asset_url }}" defer></script>
-
     <script>
       if (Shopify.designMode) {document.documentElement.classList.add('shopify-design-mode');}
     </script>

@@ -1,0 +1,33 @@
+<div class="swiper-slide" {{ block.shopify_attributes }}>
+  <div class="grid-item-inner color-{{ block.settings.color_scheme }} gradient isolate content-container">
+    {% if block.settings.text != blank %}
+    <h2>{{ block.settings.text }}</h2>
+    {% endif %}
+    {% content_for 'blocks' %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Swiper Slide Block",
+  "blocks": [{"type": "@app"}, {"type": "@theme"}],
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Swiper Slide",
+      "default":"Swiper Slide"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-2"
+    }    
+  ],
+  "presets": [
+    { "name": "Swiper Slide Block"}
+  ]
+}
+{% endschema %}
