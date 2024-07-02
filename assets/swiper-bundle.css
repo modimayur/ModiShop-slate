@@ -734,3 +734,19 @@ swiper-component.announcement-bar.swiper.swiper-initialized .swiper-button-next{
   margin: auto;
   z-index: 2;
 }
+swiper-component .swiper-pagination-bullet {
+  background-color: rgba(var(--color-button), 0.5);
+  color: rgb(var(--color-button-text));
+}
+swiper-component .swiper-pagination-bullet.swiper-pagination-bullet-active{
+  background-color: rgba(var(--color-button), 1);
+}
+swiper-component[data-pagination-type="numbers"] .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  opacity: 1;
+}
+

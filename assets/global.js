@@ -1172,8 +1172,7 @@ class VariantSelects extends HTMLElement {
     const sectionId = this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section;
 
     fetch(
-      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${
-        this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section
+      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${this.dataset.originalSection ? this.dataset.originalSection : this.dataset.section
       }`
     )
       .then((response) => response.text())
@@ -1448,9 +1447,37 @@ class swiperSlider extends HTMLElement {
   }
   init(swiperContainer) {
     const configJson = swiperContainer.getAttribute('data-swiper-config');
+    const paginationType = swiperContainer.getAttribute('data-pagination-type');
+    let pagination = {pagination: false};
+    if (paginationType == 'dots') {
+      pagination = {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        }
+      }
+    } else if (paginationType == 'counter') {
+      pagination = {
+        pagination: {
+          el: ".swiper-pagination",
+          type: "fraction",
+        }
+      }
+    } else if (paginationType == 'numbers') {
+      pagination = {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
+          },
+        },
+      }
+    }
     if (configJson) {
       let config = JSON.parse(configJson);
-      config = { ...config, ...{ init: false } };
+      config = { ...config, ...pagination, ...{ init: false } };
+      console.log(config);
       const swiper = new Swiper(swiperContainer, config);
       swiper.on('transitionEnd', function () {
         console.log('slide transitionEnd', this.activeIndex,this.previousIndex,this);
@@ -1460,7 +1487,6 @@ class swiperSlider extends HTMLElement {
       }
       swiper.on('init', function () {
         console.log('slide init');
-        console.log(this);
         // Play/Pause control button
         var controlBtn = swiperContainer.querySelector('.slideshow__autoplay');
         if(controlBtn){

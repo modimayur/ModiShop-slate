@@ -18,10 +18,10 @@
      }
    }
 {%- endstyle -%}
-
+<div class="color-{{ section.settings.color_scheme }} gradient isolate section-{{ section.id }}-padding">
 <div
   id="slider-{{ section.id }}"
-  class="page-width section-{{ section.id }}-padding"
+  class="page-width"
   data-autoplay_speed="{{ section.settings.autoplay_speed }}"
   data-gapless="{{ section.settings.gapless }}"
   section-id="{{ section.id }}"
@@ -32,30 +32,26 @@
     class="swiper"
     data-swiper-config='{
     "slidesPerView": {{ section.settings.grid-mobile }},
-    {% if section.settings.gapless %}
+    {%- if section.settings.gapless -%}
     "spaceBetween": false,
-    {% else %}
+    {%- else -%}
     "spaceBetween": {{ settings.spacing_grid_horizontal | divided_by: 2 }},
-    {% endif %}
-    {% if section.settings.autoplay %}
+    {%- endif -%}
+    {%- if section.settings.autoplay -%}
     "autoplay": {
       "delay": {{ section.settings.autoplay_speed | times: 500 }},
       "disableOnInteraction": false
     },
-    {% endif %}
-    {% if section.settings.centered-mode %}
+    {%- endif -%}
+    {%- if section.settings.centered-mode -%}
     "centeredSlides": {{ section.settings.centered-mode }},
-    {% endif %}
-    {% if section.settings.centered-mode == true or section.settings.loop == true %}
+    {%- endif -%}
+    {%- if section.settings.centered-mode == true or section.settings.loop == true -%}
     "loop": true,
-    {% endif %}
+    {%- endif -%}
     "navigation": {
       "nextEl": ".swiper-button-next",
       "prevEl": ".swiper-button-prev"
-    },
-    "pagination": {
-      "el": ".swiper-pagination",
-      "clickable": true
     },
     "breakpoints": {
       "750": {
@@ -68,6 +64,7 @@
       }
     }
   }'
+  data-pagination-type="{{ section.settings.slider_visual }}"
   >
     <div class="swiper-wrapper ">
       {% content_for 'blocks' %}
@@ -264,6 +261,30 @@
           "label": "Fade"
         }
       ]
+    },
+    {
+      "type": "select",
+      "id": "slider_visual",
+      "options": [
+        {
+          "value": "dots",
+          "label": "t:sections.slideshow.settings.slider_visual.options__2.label"
+        },
+        {
+          "value": "counter",
+          "label": "t:sections.slideshow.settings.slider_visual.options__1.label"
+        },
+        {
+          "value": "numbers",
+          "label": "t:sections.slideshow.settings.slider_visual.options__3.label"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "numbers",
+      "label": "t:sections.slideshow.settings.slider_visual.label"
     },
     {
       "type": "color_scheme",
