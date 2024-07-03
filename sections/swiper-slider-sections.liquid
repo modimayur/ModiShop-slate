@@ -26,25 +26,20 @@
   data-gapless="{{ section.settings.gapless }}"
   section-id="{{ section.id }}"
 >
-  <h2>Swiper main with thumbs</h2>
-  <!-- main swiper, pass thumbs swiper as CSS selector -->
+  {%- if section.settings.heading != blank -%}
+    <h2 class="collage-wrapper-title inline-richtext {{ section.settings.heading_alignment }} {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {{ section.settings.heading }}
+    </h2>
+  {%- endif -%}
+<!-- main swiper, pass thumbs swiper as CSS selector -->
   <swiper-component
     class="swiper"
     data-swiper-config='{
-    "slidesPerView": {{ section.settings.grid-mobile }},
-    {%- if section.settings.gapless -%}
-    "spaceBetween": false,
-    {%- else -%}
-    "spaceBetween": {{ settings.spacing_grid_horizontal | divided_by: 2 }},
-    {%- endif -%}
     {%- if section.settings.autoplay -%}
     "autoplay": {
       "delay": {{ section.settings.autoplay_speed | times: 500 }},
       "disableOnInteraction": false
     },
-    {%- endif -%}
-    {%- if section.settings.centered-mode -%}
-    "centeredSlides": {{ section.settings.centered-mode }},
     {%- endif -%}
     {%- if section.settings.centered-mode == true or section.settings.loop == true -%}
     "loop": true,
@@ -53,6 +48,16 @@
       "nextEl": ".swiper-button-next",
       "prevEl": ".swiper-button-prev"
     },
+    {%- if section.settings.slidereffect == 'slide' %}
+    "slidesPerView": {{ section.settings.grid-mobile }},
+    {%- if section.settings.gapless -%}
+    "spaceBetween": false,
+    {%- else -%}
+    "spaceBetween": {{ settings.spacing_grid_horizontal | divided_by: 2 }},
+    {%- endif -%}
+    {%- if section.settings.centered-mode -%}
+    "centeredSlides": {{ section.settings.centered-mode }},
+    {%- endif -%}
     "breakpoints": {
       "750": {
         "slidesPerView": {{ section.settings.grid-tablet }},
@@ -63,6 +68,10 @@
         "spaceBetween": {% if section.settings.gapless %}false{% else %}{{ settings.spacing_grid_horizontal }}{% endif %}
       }
     }
+    {%- else -%}
+      "effect": "fade",
+      "slidesPerView": 1
+    {%- endif -%}
   }'
   data-pagination-type="{{ section.settings.slider_visual }}"
   >

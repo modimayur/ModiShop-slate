@@ -1205,6 +1205,236 @@
         "padding_bottom": 60
       }
     },
+    "swiper_slider_sections_YaXpWi": {
+      "type": "swiper-slider-sections",
+      "blocks": {
+        "swiper_slide_4HA36p": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_dJMW4b": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 01"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_dJMW4b"
+          ]
+        },
+        "swiper_slide_DdCw9A": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_iHxkeq": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 02"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_iHxkeq"
+          ]
+        },
+        "swiper_slide_pagJij": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_KKR4yG": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 03"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_KKR4yG"
+          ]
+        },
+        "swiper_slide_WkcpTi": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_Pza8tR": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 04"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_Pza8tR"
+          ]
+        },
+        "swiper_slide_iVM4Dr": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_eJdcr4": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 05"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_eJdcr4"
+          ]
+        },
+        "swiper_slide_xX8eyd": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_e3NVHe": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 06"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_e3NVHe"
+          ]
+        },
+        "swiper_slide_hadXwT": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_gGz4DT": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 07"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_gGz4DT"
+          ]
+        },
+        "swiper_slide_E7QbNL": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_pUkdqd": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 08"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_pUkdqd"
+          ]
+        },
+        "swiper_slide_yhdgtA": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_8jaKxw": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 09"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_8jaKxw"
+          ]
+        },
+        "swiper_slide_pXbf9z": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_zednqF": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 10"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_zednqF"
+          ]
+        },
+        "swiper_slide_9MbFXw": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_yXHNxc": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 11"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_yXHNxc"
+          ]
+        },
+        "swiper_slide_rakjqK": {
+          "type": "swiper-slide",
+          "settings": {
+          },
+          "blocks": {
+            "section_heading_kpfn9d": {
+              "type": "section-heading",
+              "settings": {
+                "text": "Slide 12"
+              }
+            }
+          },
+          "block_order": [
+            "section_heading_kpfn9d"
+          ]
+        }
+      },
+      "block_order": [
+        "swiper_slide_4HA36p",
+        "swiper_slide_DdCw9A",
+        "swiper_slide_pagJij",
+        "swiper_slide_WkcpTi",
+        "swiper_slide_iVM4Dr",
+        "swiper_slide_xX8eyd",
+        "swiper_slide_hadXwT",
+        "swiper_slide_E7QbNL",
+        "swiper_slide_yhdgtA",
+        "swiper_slide_pXbf9z",
+        "swiper_slide_9MbFXw",
+        "swiper_slide_rakjqK"
+      ],
+      "settings": {
+        "heading": "Slider Sections",
+        "heading_alignment": "center",
+        "heading_size": "h2",
+        "image_ratio": "adapt",
+        "grid-desktop": 5,
+        "grid-tablet": 4,
+        "grid-mobile": 1,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "loop": false,
+        "centered-mode": false,
+        "gapless": false,
+        "slidereffect": "fade",
+        "slider_visual": "none",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "slider_sections_KMELbh": {
       "type": "slider-sections",
       "blocks": {
@@ -1461,6 +1691,7 @@
     "swiper_slider_sections_kyziFn",
     "swiper_slider_sections_4E9AVX",
     "swiper_slider_sections_BxqLc8",
+    "swiper_slider_sections_YaXpWi",
     "slider_sections_KMELbh"
   ]
 }
