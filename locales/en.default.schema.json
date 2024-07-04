@@ -396,7 +396,8 @@
       "padding": {
         "section_padding_heading": "Section padding",
         "padding_top": "Top padding",
-        "padding_bottom": "Bottom padding"
+        "padding_bottom": "Bottom padding",
+        "gapless": "Make gapless"
       },
       "spacing": "Spacing",
       "colors": {
@@ -528,6 +529,58 @@
           "label": "Narrow width"
         }
       }
+    },
+    "slider-settings": {
+      "name": "Slider Settings",
+      "settings": {
+        "slider-effect": {
+          "label": "Slider Effect",
+          "info": "\"Slides per view\" applies only to the slide effect, the fade effect will be \"1 Slide per view\".",
+          "slide": {
+            "label": "Slide"
+          },
+          "fade": {
+            "label": "Fade"
+          }
+        },
+        "slide-desktop-per-view":{
+          "label": "Slide per view Desktop"
+        },
+        "slide-tablet-per-view":{
+          "label": "Slide per view Tablet"
+        },
+        "slide-mobile-per-view":{
+          "label": "Slide per view Mobile"
+        },
+        "auto-slides":{
+          "label": "Auto rotate slides"
+        },
+        "change_slides_speed": {
+          "label": "Change slides every"
+        },
+        "loop": {
+          "label": "Slide in Loop",
+          "info": "Set to true to enable continuous loop mode"
+        },
+        "center-mode": {
+          "label": "Centered mode"
+        },
+        "slider_visual": {
+          "label": "Pagination style",
+          "counter": {
+            "label": "Counter"
+          },
+          "dots": {
+            "label": "Dots"
+          },
+          "numbers": {
+            "label": "Numbers"
+          },
+          "none": {
+            "label": "Disable"
+          }
+        }
+      }      
     },
     "apps": {
       "name": "Apps",

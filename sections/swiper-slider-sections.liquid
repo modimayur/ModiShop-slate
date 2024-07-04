@@ -19,99 +19,102 @@
    }
 {%- endstyle -%}
 <div class="color-{{ section.settings.color_scheme }} gradient isolate section-{{ section.id }}-padding">
-<div
-  id="slider-{{ section.id }}"
-  class="page-width"
-  data-autoplay_speed="{{ section.settings.autoplay_speed }}"
-  data-gapless="{{ section.settings.gapless }}"
-  section-id="{{ section.id }}"
->
-  {%- if section.settings.heading != blank -%}
-    <h2 class="collage-wrapper-title inline-richtext {{ section.settings.heading_alignment }} {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      {{ section.settings.heading }}
-    </h2>
-  {%- endif -%}
-<!-- main swiper, pass thumbs swiper as CSS selector -->
-  <swiper-component
-    class="swiper"
-    data-swiper-config='{
-    {%- if section.settings.autoplay -%}
-    "autoplay": {
-      "delay": {{ section.settings.autoplay_speed | times: 500 }},
-      "disableOnInteraction": false
-    },
-    {%- endif -%}
-    {%- if section.settings.centered-mode == true or section.settings.loop == true -%}
-    "loop": true,
-    {%- endif -%}
-    "navigation": {
-      "nextEl": ".swiper-button-next",
-      "prevEl": ".swiper-button-prev"
-    },
-    {%- if section.settings.slidereffect == 'slide' %}
-    "slidesPerView": {{ section.settings.grid-mobile }},
-    {%- if section.settings.gapless -%}
-    "spaceBetween": false,
-    {%- else -%}
-    "spaceBetween": {{ settings.spacing_grid_horizontal | divided_by: 2 }},
-    {%- endif -%}
-    {%- if section.settings.centered-mode -%}
-    "centeredSlides": {{ section.settings.centered-mode }},
-    {%- endif -%}
-    "breakpoints": {
-      "750": {
-        "slidesPerView": {{ section.settings.grid-tablet }},
-        "spaceBetween": {% if section.settings.gapless %}false{% else %}{{ settings.spacing_grid_horizontal }}{% endif %}
-      },
-      "990": {
-        "slidesPerView": {{ section.settings.grid-desktop }},
-        "spaceBetween": {% if section.settings.gapless %}false{% else %}{{ settings.spacing_grid_horizontal }}{% endif %}
-      }
-    }
-    {%- else -%}
-      "effect": "fade",
-      "slidesPerView": 1
-    {%- endif -%}
-  }'
-  data-pagination-type="{{ section.settings.slider_visual }}"
+  <div
+    id="slider-{{ section.id }}"
+    class="page-width"
+    data-autoplay_speed="{{ section.settings.autoplay_speed }}"
+    data-gapless="{{ section.settings.gapless }}"
+    section-id="{{ section.id }}"
   >
-    <div class="swiper-wrapper ">
-      {% content_for 'blocks' %}
-    </div>
-    <div class="slideshow__controls slideshow__controls--top">
-      <button
-        type="button"
-        class="slider-button slider-button--prev swiper-button-arrows swiper-button-prev"
-        name="previous"
-        aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
-        aria-controls="Slider-{{ section.id }}"
-      >
-        {% render 'icon-caret' %}
-      </button>
-      <div class="swiper-pagination static"></div>
-     
-      <button
-        type="button"
-        class="slider-button slider-button--next swiper-button-arrows swiper-button-next"
-        name="next"
-        aria-label="{{ 'sections.announcements.next_announcement' | t }}"
-        aria-controls="Slider-{{ section.id }}"
-      >
-        {% render 'icon-caret' %}
-      </button>
-      
-      {%- if section.settings.autoplay -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="collage-wrapper-title inline-richtext {{ section.settings.heading_alignment }} {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+    <!-- main swiper, pass thumbs swiper as CSS selector -->
+    <swiper-component
+      class="swiper"
+      data-swiper-config='
+        {
+          {%- if section.settings.autoplay -%}
+          "autoplay": {
+            "delay": {{ section.settings.autoplay_speed | times: 500 }},
+            "disableOnInteraction": false
+          },
+          {%- endif -%}
+          {%- if section.settings.centered-mode == true or section.settings.loop == true -%}
+          "loop": true,
+          {%- endif -%}
+          "navigation": {
+            "nextEl": ".swiper-button-next",
+            "prevEl": ".swiper-button-prev"
+          },
+          {%- if section.settings.slidereffect == 'slide' %}
+          "slidesPerView": {{ section.settings.grid-mobile }},
+          {%- if section.settings.gapless -%}
+          "spaceBetween": false,
+          {%- else -%}
+          "spaceBetween": {{ settings.spacing_grid_horizontal | divided_by: 2 }},
+          {%- endif -%}
+          {%- if section.settings.centered-mode -%}
+          "centeredSlides": {{ section.settings.centered-mode }},
+          {%- endif -%}
+          "breakpoints": {
+            "750": {
+              "slidesPerView": {{ section.settings.grid-tablet }},
+              "spaceBetween": {% if section.settings.gapless %}false{% else %}{{ settings.spacing_grid_horizontal }}{% endif %}
+            },
+            "990": {
+              "slidesPerView": {{ section.settings.grid-desktop }},
+              "spaceBetween": {% if section.settings.gapless %}false{% else %}{{ settings.spacing_grid_horizontal }}{% endif %}
+            }
+          }
+          {%- else -%}
+            "effect": "fade",
+            "slidesPerView": 1
+          {%- endif -%}
+        }
+      '
+      data-pagination-type="{{ section.settings.slider_visual }}"
+    >
+      <div class="swiper-wrapper ">
+        {% content_for 'blocks' %}
+      </div>
+      <div class="slideshow__controls slideshow__controls--top">
         <button
           type="button"
-          class="slideshow__autoplay slider-button{% if section.settings.autoplay == false %} slideshow__autoplay--paused{% endif %}"
-          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+          class="slider-button slider-button--prev swiper-button-arrows swiper-button-prev"
+          name="previous"
+          aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
+          aria-controls="Slider-{{ section.id }}"
         >
-          {%- render 'icon-pause' -%}
-          {%- render 'icon-play' -%}
+          {% render 'icon-caret' %}
         </button>
-      {%- endif -%}
-    </div>
-  </swiper-component>
+        <div class="swiper-pagination static"></div>
+
+        <button
+          type="button"
+          class="slider-button slider-button--next swiper-button-arrows swiper-button-next"
+          name="next"
+          aria-label="{{ 'sections.announcements.next_announcement' | t }}"
+          aria-controls="Slider-{{ section.id }}"
+        >
+          {% render 'icon-caret' %}
+        </button>
+
+        {%- if section.settings.autoplay -%}
+          <button
+            type="button"
+            class="slideshow__autoplay slider-button{% if section.settings.autoplay == false %} slideshow__autoplay--paused{% endif %}"
+            aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+          >
+            {%- render 'icon-pause' -%}
+            {%- render 'icon-play' -%}
+          </button>
+        {%- endif -%}
+      </div>
+    </swiper-component>
+  </div>
 </div>
 
 {% schema %}
@@ -192,12 +195,32 @@
     },
     {
       "type": "header",
-      "content": "Slider Settings"
+      "content": "t:sections.slider-settings.name"
+    },
+    {
+      "type": "select",
+      "id": "slidereffect",
+      "label": "t:sections.slider-settings.settings.slider-effect.label",
+      "default": "slide",
+      "options": [
+        {
+          "value": "slide",
+          "label": "t:sections.slider-settings.settings.slider-effect.slide.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.slider-settings.settings.slider-effect.fade.label"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.slider-settings.settings.slider-effect.info"
     },
     {
       "type": "range",
       "id": "grid-desktop",
-      "label": "Slide Per View Desktop",
+      "label": "t:sections.slider-settings.settings.slide-desktop-per-view.label",
       "default": 5,
       "min": 1,
       "max": 10,
@@ -206,7 +229,7 @@
     {
       "type": "range",
       "id": "grid-tablet",
-      "label": "Slide Per View Tablet",
+      "label": "t:sections.slider-settings.settings.slide-tablet-per-view.label",
       "default": 4,
       "min": 1,
       "max": 10,
@@ -215,22 +238,58 @@
     {
       "type": "range",
       "id": "grid-mobile",
-      "label": "Slide Per View Mobile",
+      "label": "t:sections.slider-settings.settings.slide-mobile-per-view.label",
       "default": 1,
       "min": 1,
       "max": 5,
       "step": 0.5
-    },  
+    },
+    {
+      "type": "checkbox",
+      "id": "gapless",
+      "label": "t:sections.all.padding.gapless",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "centered-mode",
+      "label": "t:sections.slider-settings.settings.center-mode.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "slider_visual",
+      "options": [
+        {
+          "value": "dots",
+          "label": "t:sections.slider-settings.settings.slider_visual.dots.label"
+        },
+        {
+          "value": "counter",
+          "label": "t:sections.slider-settings.settings.slider_visual.counter.label"
+        },
+        {
+          "value": "numbers",
+          "label": "t:sections.slider-settings.settings.slider_visual.numbers.label"
+        },
+        {
+          "value": "none",
+          "label": "t:sections.slider-settings.settings.slider_visual.none.label"
+        }
+      ],
+      "default": "numbers",
+      "label": "t:sections.slider-settings.settings.slider_visual.label"
+    },
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Auto-rotate slides",
+      "label": "t:sections.slider-settings.settings.auto-slides.label",
       "default": false
     },
     {
       "type": "range",
       "id": "autoplay_speed",
-      "label": "Change slides every (seconds)",
+      "label": "t:sections.slider-settings.settings.change_slides_speed.label",
       "min": 1,
       "max": 40,
       "step": 0.5,
@@ -240,60 +299,9 @@
     {
       "type": "checkbox",
       "id": "loop",
-      "label": "Loop",
+      "label": "t:sections.slider-settings.settings.loop.label",
+      "info": "t:sections.slider-settings.settings.loop.info",
       "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "centered-mode",
-      "label": "Centered mode",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "gapless",
-      "label": "Make gapless?",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "slidereffect",
-      "label": "Slider Effect",
-      "default": "slide",
-      "options": [
-        {
-          "value": "slide",
-          "label": "Slide"
-        },
-        {
-          "value": "fade",
-          "label": "Fade"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "slider_visual",
-      "options": [
-        {
-          "value": "dots",
-          "label": "t:sections.slideshow.settings.slider_visual.options__2.label"
-        },
-        {
-          "value": "counter",
-          "label": "t:sections.slideshow.settings.slider_visual.options__1.label"
-        },
-        {
-          "value": "numbers",
-          "label": "t:sections.slideshow.settings.slider_visual.options__3.label"
-        },
-        {
-          "value": "none",
-          "label": "None"
-        }
-      ],
-      "default": "numbers",
-      "label": "t:sections.slideshow.settings.slider_visual.label"
     },
     {
       "type": "color_scheme",
