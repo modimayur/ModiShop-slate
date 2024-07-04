@@ -52,74 +52,74 @@
     {%- elsif section.blocks.size > 1 -%}
       <swiper-component
         class="announcement-bar swiper"
-        data-swiper-config='{"loop":true,"effect": "fade", "fadeEffect":{"crossFade": true},{% if section.settings.auto_rotate %}"autoplay":{"delay":{{ section.settings.change_slides_speed | times: 500  }},"disableOnInteraction": false},{% endif %}"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}'
+        data-swiper-config='{"loop":true,{%- if section.settings.slidereffect == 'fade' %}"effect": "fade", "fadeEffect":{"crossFade": true},{% endif %}{% if section.settings.auto_rotate %}"autoplay":{"delay":{{ section.settings.change_slides_speed | times: 500  }},"disableOnInteraction": false},{% endif %}"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}'
         role="region"
         aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
         aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
       >
-          <button
-            type="button"
-            class="slider-button slider-button--prev swiper-button-prev"
-            name="previous"
-            aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
-            aria-controls="Slider-{{ section.id }}"
-          >
-            {% render 'icon-caret' %}
-          </button>
-          <div
-            class="swiper-wrapper"
-            id="Slider-{{ section.id }}"
-            aria-live="polite"
-            aria-atomic="true"
-            data-autoplay="{{ section.settings.auto_rotate }}"
-            data-speed="{{ section.settings.change_slides_speed }}"
-          >
-            {%- for block in section.blocks -%}
+        <button
+          type="button"
+          class="slider-button slider-button--prev swiper-button-prev"
+          name="previous"
+          aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
+          aria-controls="Slider-{{ section.id }}"
+        >
+          {% render 'icon-caret' %}
+        </button>
+        <div
+          class="swiper-wrapper"
+          id="Slider-{{ section.id }}"
+          aria-live="polite"
+          aria-atomic="true"
+          data-autoplay="{{ section.settings.auto_rotate }}"
+          data-speed="{{ section.settings.change_slides_speed }}"
+        >
+          {%- for block in section.blocks -%}
+            <div
+              class="swiper-slide"
+              id="Slide-{{ section.id }}-{{ forloop.index }}"
+              {{ block.shopify_attributes }}
+              role="group"
+              aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
+              aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+              tabindex="-1"
+            >
               <div
-                class="swiper-slide"
-                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                class="announcement-bar__announcement"
+                role="region"
+                aria-label="{{ 'sections.header.announcement' | t }}"
                 {{ block.shopify_attributes }}
-                role="group"
-                aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
-                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                tabindex="-1"
               >
-                <div
-                  class="announcement-bar__announcement"
-                  role="region"
-                  aria-label="{{ 'sections.header.announcement' | t }}"
-                  {{ block.shopify_attributes }}
-                >
-                  {%- if block.settings.text != blank -%}
-                    {%- if block.settings.link != blank -%}
-                      <a
-                        href="{{ block.settings.link }}"
-                        class="announcement-bar__link link link--text focus-inset animate-arrow"
-                      >
-                    {%- endif -%}
-                    <p class="announcement-bar__message h5">
-                      <span>{{ block.settings.text | escape }}</span>
-                      {%- if block.settings.link != blank -%}
-                        {% render 'icon-arrow' %}
-                      {%- endif -%}
-                    </p>
-                    {%- if block.settings.link != blank -%}
-                      </a>
-                    {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  {%- if block.settings.link != blank -%}
+                    <a
+                      href="{{ block.settings.link }}"
+                      class="announcement-bar__link link link--text focus-inset animate-arrow"
+                    >
                   {%- endif -%}
-                </div>
+                  <p class="announcement-bar__message h5">
+                    <span>{{ block.settings.text | escape }}</span>
+                    {%- if block.settings.link != blank -%}
+                      {% render 'icon-arrow' %}
+                    {%- endif -%}
+                  </p>
+                  {%- if block.settings.link != blank -%}
+                    </a>
+                  {%- endif -%}
+                {%- endif -%}
               </div>
-            {%- endfor -%}
-          </div>
-          <button
-            type="button"
-            class="slider-button slider-button--next swiper-button-next"
-            name="next"
-            aria-label="{{ 'sections.announcements.next_announcement' | t }}"
-            aria-controls="Slider-{{ section.id }}"
-          >
-            {% render 'icon-caret' %}
-          </button>
+            </div>
+          {%- endfor -%}
+        </div>
+        <button
+          type="button"
+          class="slider-button slider-button--next swiper-button-next"
+          name="next"
+          aria-label="{{ 'sections.announcements.next_announcement' | t }}"
+          aria-controls="Slider-{{ section.id }}"
+        >
+          {% render 'icon-caret' %}
+        </button>
       </swiper-component>
       {%- if request.design_mode -%}
         <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
@@ -191,22 +191,38 @@
     },
     {
       "type": "header",
-      "content": "t:sections.announcement-bar.settings.header__2.content"
+      "content": "t:sections.slider-settings.name"
+    },
+    {
+      "type": "select",
+      "id": "slidereffect",
+      "label": "t:sections.slider-settings.settings.slider-effect.label",
+      "default": "slide",
+      "options": [
+        {
+          "value": "slide",
+          "label": "t:sections.slider-settings.settings.slider-effect.slide.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.slider-settings.settings.slider-effect.fade.label"
+        }
+      ]
     },
     {
       "type": "checkbox",
       "id": "auto_rotate",
-      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "label": "t:sections.slider-settings.settings.auto-slides.label",
       "default": false
     },
     {
       "type": "range",
       "id": "change_slides_speed",
-      "min": 3,
-      "max": 10,
+      "min": 1,
+      "max": 40,
       "step": 1,
       "unit": "s",
-      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "label": "t:sections.slider-settings.settings.change_slides_speed.label",
       "default": 5
     },
     {

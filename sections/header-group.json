@@ -12,6 +12,13 @@
             "link": ""
           }
         },
+        "announcement-bar-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Announcement text 02",
+            "link": ""
+          }
+        },
         "announcement-bar-3": {
           "type": "announcement",
           "settings": {
