@@ -143,6 +143,7 @@
                 }}
               {%- endif -%}
             {%- else -%}
+              this
               {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
               {%- if placeholder_slide == 1 -%}
                 {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}

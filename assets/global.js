@@ -1477,16 +1477,16 @@ class swiperSlider extends HTMLElement {
     if (configJson) {
       let config = JSON.parse(configJson);
       config = { ...config, ...pagination, ...{ init: false } };
-      console.log(config);
+      // console.log(config);
       const swiper = new Swiper(swiperContainer, config);
       swiper.on('transitionEnd', function () {
-        console.log('slide transitionEnd', this.activeIndex,this.previousIndex,this);
+        // console.log('slide transitionEnd', this.activeIndex,this.previousIndex,this);
       });
       function goToSlide(swiper, slideIndex) {
         swiper.slideTo(slideIndex - 1);
       }
       swiper.on('init', function () {
-        console.log('slide init');
+        // console.log('slide init');
         // Play/Pause control button
         var controlBtn = swiperContainer.querySelector('.slideshow__autoplay');
         if(controlBtn){

@@ -97,6 +97,7 @@ slideshow-component .slideshow.banner {
   .slideshow__text-wrapper.banner__content {
     height: 100%;
     padding: 5rem;
+    flex-grow: 1;
   }
 }
 

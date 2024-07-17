@@ -490,3 +490,6 @@
     color: currentColor;
   }
 }
+.swiper-slideshow .swiper-slide.banner{
+  flex-direction: column;
+}

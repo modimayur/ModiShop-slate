@@ -1,33 +1,229 @@
-<div class="swiper-slide" {{ block.shopify_attributes }}>
-  <div class="grid-item-inner color-{{ block.settings.color_scheme }} gradient isolate content-container">
-    {% if block.settings.text != blank %}
-    <h2>{{ block.settings.text }}</h2>
-    {% endif %}
-    {% content_for 'blocks' %}
+{%- liquid
+  assign blockindex = 0
+  for sectionBlock in section.blocks
+    assign blockindex = blockindex | plus: 1
+    if block.id == sectionBlock.id
+      break
+    endif
+  endfor
+-%}
+<div
+  id="slide-{{ block.id }}"
+  class="swiper-slide banner banner--content-align-center banner--{{ section.settings.slide_height }}"
+  aria-hidden="{% if blockindex == 1 %}false{% else %}true{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {% if section.id contains 'swiperslideshow'
+    and section.settings.slide_height == 'adapt_image'
+    and blockindex == 1
+    and block.settings.image != blank
+  -%}
+    {% style %}
+      @media screen and (max-width: 749px) {
+        #shopify-section-{{ section.id }} .media::before,
+        #shopify-section-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+          padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;
+          content: '';
+          display: block;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        #shopify-section-{{ section.id }} .media::before {
+          padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;
+          content: '';
+          display: block;
+        }
+      }
+    {% endstyle %}
+  {% endif %}
+
+  <div class="banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
+    {%- if block.settings.image -%}
+      {%- liquid
+        assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+        assign sizes = '100vw'
+        assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+      -%}
+      {%- if blockindex == 1 -%}
+        {{
+          block.settings.image
+          | image_url: width: 3840
+          | image_tag: height: height, sizes: sizes, widths: widths, loading: 'eager'
+        }}
+      {%- else -%}
+        {{
+          block.settings.image
+          | image_url: width: 3840
+          | image_tag: height: height, sizes: sizes, widths: widths, loading: 'lazy'
+        }}
+      {%- endif -%}
+    {%- else -%}
+      {%- assign placeholder_slide = blockindex | modulo: 2 -%}
+      {%- if placeholder_slide == 1 -%}
+        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- else -%}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
+    <div class="{{ block.settings | class_list }} slide__content color-{{ block.settings.color_scheme }} gradient isolate  {% if section.id contains 'swiperslideshow' %} banner__box content-container {% endif %}">
+      {% content_for "blocks" %}
+    </div>
   </div>
 </div>
+
 {% schema %}
 {
-  "name": "Swiper Slide Block",
-  "blocks": [{"type": "@app"}, {"type": "@theme"}],
+  "name": "Swiper Slide",
+  "blocks": [{ "type": "@app" }, { "type": "@theme" }],
   "tag": null,
   "settings": [
     {
-      "type": "text",
-      "id": "text",
-      "label": "Swiper Slide",
-      "default":"Swiper Slide"
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "box_align",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__1.label"
+        },
+        {
+          "value": "top-center",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__2.label"
+        },
+        {
+          "value": "top-right",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__3.label"
+        },
+        {
+          "value": "middle-left",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__4.label"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__5.label"
+        },
+        {
+          "value": "middle-right",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__6.label"
+        },
+        {
+          "value": "bottom-left",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__7.label"
+        },
+        {
+          "value": "bottom-center",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__8.label"
+        },
+        {
+          "value": "bottom-right",
+          "label": "t:sections.slideshow.blocks.slide.settings.box_align.options__9.label"
+        }
+      ],
+      "default": "middle-center",
+      "label": "t:sections.slideshow.blocks.slide.settings.box_align.label",
+      "info": "t:sections.slideshow.blocks.slide.settings.box_align.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "label": "t:sections.slideshow.blocks.slide.settings.show_text_box.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.option_1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.option_2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.option_3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.slideshow.blocks.slide.settings.text_alignment.label"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.slideshow.blocks.slide.settings.image_overlay_opacity.label",
+      "default": 0
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info",
-      "default": "scheme-2"
-    }    
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.slideshow.settings.mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment_mobile.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment_mobile.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.slideshow.blocks.slide.settings.text_alignment_mobile.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.slideshow.blocks.slide.settings.text_alignment_mobile.label"
+    }
   ],
   "presets": [
-    { "name": "Swiper Slide Block"}
+    {
+      "name": "Swiper Slide",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell your brand's story through images</p>"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Button label",
+            "spacing": {
+              "padding": "10px 30px"
+            }
+          }
+        }
+      ]
+    }
   ]
 }
 {% endschema %}

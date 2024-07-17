@@ -18,12 +18,10 @@
      }
    }
 {%- endstyle -%}
-<div class="color-{{ section.settings.color_scheme }} gradient isolate section-{{ section.id }}-padding">
+<div class="{% if section.settings.custome_class != blank %} {{ custome_class }}{% endif %}color-{{ section.settings.color_scheme }} gradient isolate section-{{ section.id }}-padding">
   <div
     id="slider-{{ section.id }}"
     class="page-width"
-    data-autoplay_speed="{{ section.settings.autoplay_speed }}"
-    data-gapless="{{ section.settings.gapless }}"
     section-id="{{ section.id }}"
   >
     {%- if section.settings.heading != blank -%}
@@ -119,7 +117,7 @@
 
 {% schema %}
 {
-  "name": "Swiper Slider",
+  "name": "Slider",
   "tag": "section",
   "class": "mount-css-slider mount-slideshow mount-video-background supports-absolute-header",
   "settings": [
@@ -311,6 +309,11 @@
       "default": "scheme-1"
     },
     {
+      "type": "text",
+      "id": "custome_class",
+      "label": "Custome Class"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
     },
@@ -338,8 +341,20 @@
   "blocks": [{ "type": "swiper-slide" }],
   "presets": [
     {
-      "name": "Swiper Slider",
+      "name": "Slider",
       "blocks": [
+        {
+          "type": "swiper-slide",
+          "settings": {
+            "text": "This is a text block inside a group block!"
+          }
+        },
+        {
+          "type": "swiper-slide",
+          "settings": {
+            "text": "This is a text block inside a group block!"
+          }
+        },
         {
           "type": "swiper-slide",
           "settings": {
