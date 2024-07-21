@@ -296,7 +296,9 @@
         "column_block_kNVWCT": {
           "type": "swiper-slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/hero-slider-one.webp",
             "box_align": "middle-center",
+            "show_placeholder": true,
             "show_text_box": true,
             "text_alignment": "center",
             "image_overlay_opacity": 0,
@@ -320,6 +322,7 @@
           "settings": {
             "box_align": "middle-center",
             "show_text_box": true,
+            "show_placeholder": true,
             "text_alignment": "center",
             "image_overlay_opacity": 0,
             "color_scheme": "",
@@ -576,7 +579,7 @@
         "heading": "Slider Sections",
         "heading_alignment": "center",
         "heading_size": "h2",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "slidereffect": "slide",
         "grid-desktop": 5,
         "grid-tablet": 4,
