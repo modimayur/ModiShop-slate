@@ -1,6 +1,6 @@
 {%- liquid
   assign banner = false
-  if section.id contains 'swiperslideshow'
+  if section.id contains 'slideshow'
   assign banner = true
   endif 
   assign blockindex = 0
@@ -17,7 +17,6 @@
   aria-hidden="{% if blockindex == 1 %}false{% else %}true{% endif %}"
   {{ block.shopify_attributes }}
 >
-
   {% if section.id contains 'swiperslideshow'
     and section.settings.slide_height == 'adapt_image'
     and blockindex == 1
@@ -50,7 +49,7 @@
     {% endstyle %}
   {% endif %}
 
-  <div class="{% if banner %}banner__media {% endif %}media{% if block.settings.image == blank and block.settings.show_placeholder == true %} placeholder{% endif %}{%  unless banner %} media--{{ section.settings.image_ratio }}{% endunless %}">
+  <div class="{% if banner %}banner__media {% endif %}media{% if block.settings.image == blank and block.settings.show_placeholder == true %} placeholder{% endif %}{%  unless banner %} media--{% if section.settings.slide_height != blank and section.settings.slide_height != 'adapt' %}{{ section.settings.slide_height }}{% else %}{{ section.settings.image_ratio }}{% endif %}{% endunless %}">
     {%- if block.settings.image -%}
       {%- liquid
         assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
@@ -80,7 +79,7 @@
     {%- endif -%}
   </div>
   <div class="{% if banner %}slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% endif %}">
-    <div class="{{ block.settings | class_list }} slide__content color-{{ block.settings.color_scheme }} gradient isolate  {% if section.id contains 'swiperslideshow' %} banner__box content-container {% endif %}">
+    <div class="{{ block.settings | class_list }} slide__content color-{{ block.settings.color_scheme }} gradient isolate  {% if banner %} banner__box content-container {% endif %}">
       {% content_for "blocks" %}
     </div>
   </div>
