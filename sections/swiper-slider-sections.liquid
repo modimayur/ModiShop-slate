@@ -18,7 +18,7 @@
      }
    }
 {%- endstyle -%}
-<div class="{% if section.settings.custome_class != blank %} {{ custome_class }}{% endif %}color-{{ section.settings.color_scheme }} gradient isolate section-{{ section.id }}-padding">
+<div class="{% if section.settings.custome_class != blank %} {{ section.settings.custome_class }}{% endif %}color-{{ section.settings.color_scheme }} gradient isolate section-{{ section.id }}-padding">
   <div
     id="slider-{{ section.id }}"
     class="page-width"

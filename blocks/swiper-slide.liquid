@@ -4,9 +4,9 @@
   assign banner = true
   endif 
   assign blockindex = 0
-  for sectionBlock in section.blocks
+  for sectionblock in section.blocks
     assign blockindex = blockindex | plus: 1
-    if block.id == sectionBlock.id
+    if block.id == sectionblock.id
       break
     endif
   endfor

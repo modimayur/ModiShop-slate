@@ -1,0 +1,16 @@
+[environments.env1]
+store = "modishop-5"
+password  = "shptka_fdc1569aeab3d4155f32294248a33b92"
+output = "json"
+live = true
+allow-live = true
+
+[environments.env2]
+store = "modishop-5"
+password  = "shptka_fdc1569aeab3d4155f32294248a33b92"
+theme = "169473737019"
+path = "./ModiShop-slate"
+output = "json"
+live = true
+allow-live = true
+
